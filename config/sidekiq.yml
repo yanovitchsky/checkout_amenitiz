@@ -1,0 +1,5 @@
+---
+:concurrency: 2
+:queues:
+  - amenitiz_development_default
+  - amenitiz_development_mailers
