@@ -31,7 +31,9 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
 
