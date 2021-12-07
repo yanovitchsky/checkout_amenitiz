@@ -1,4 +1,5 @@
 module Repositories
+  RecordNotFoundError = Class.new(StandardError)
   class Base
     def all
       entity.all
@@ -13,9 +14,9 @@ module Repositories
     # end
 
     def find(id)
-      entity_dataset.find(id)
-      # rescue ActiveRecord::RecordNotFound => e
-      #   raise RecordNotFoundError, e
+      entity.find(id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise RecordNotFoundError
     end
 
     def create(attributes)
