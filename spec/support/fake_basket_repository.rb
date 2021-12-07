@@ -9,6 +9,10 @@ class FakeBasketRepository
     @basket
   end
 
+  def get(id)
+    @basket
+  end
+
   def find_product(id)
     0
   end

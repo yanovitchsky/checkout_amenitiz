@@ -6,6 +6,11 @@ module CashRegister
         Repositories::Product.new.find(id)
       end
 
+      def get(id)
+        basket = find(id)
+        basket_result(basket)
+      end
+
       def set_item(id, product_id, quantity)
         basket = find(id)
         product = find_product(product_id)
