@@ -3,7 +3,7 @@ require 'rails_helper'
 require Rails.root.join('spec/support/fake_basket_repository.rb')
 
 RSpec.describe CashRegister::Interactors::SetItem do
-  describe '.call' do
+  describe '#call' do
     
     context 'when basket or item does not exist' do
       fake(:repository) {CashRegister::Repositories::Basket}

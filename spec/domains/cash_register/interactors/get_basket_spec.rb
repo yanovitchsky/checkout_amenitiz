@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CashRegister::Interactors::GetBasket do
-  describe '.call' do
+  describe '#call' do
     let(:basket) { FactoryBot.build(:basket, id: SecureRandom.uuid) }
     
     context 'when basket does not exist' do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CashRegister::Interactors::ListProducts do
-  describe '.call' do
+  describe '#call' do
     let(:products) { FactoryBot.build_list(:product, 3) }
     
     it 'list all products' do
