@@ -3,10 +3,10 @@ module CashRegister
     class SetItem < ::Interactors::Base
       include Wisper::Publisher
 
-      def call(id, product_id, quantity)
+      def call(id, product_code, quantity)
         basket = @repository.find(id)
-        product = @repository.find_product(product_id)
-        basket = @repository.set_item(id, product_id, quantity)
+        product = @repository.find_product(product_code)
+        basket = @repository.set_item(id, product_code, quantity)
         broadcast(:item_set, basket)
       rescue ::Repositories::RecordNotFoundError
         broadcast(:basket_or_product_not_found)

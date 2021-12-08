@@ -4,7 +4,7 @@ module CashRegister
       include Wisper::Publisher
 
       def call(id)
-        basket = @repository.find(id)
+        basket = @repository.get(id)
         broadcast(:basket_found, basket)
       rescue ::Repositories::RecordNotFoundError
         broadcast(:basket_not_found)

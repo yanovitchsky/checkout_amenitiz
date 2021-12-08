@@ -19,22 +19,22 @@ RSpec.describe CashRegister::Interactors::SetItem do
         repository = FakeBasketRepository.new
         interactor = described_class.new(repository)
         basket_id = SecureRandom.uuid
-        product_id = SecureRandom.uuid
+        product_code = 'abcd'
         expect {
-          interactor.call(basket_id, product_id, 1)
-        }.to broadcast(:item_set, a_hash_including(product_id => {price: 10, quantity: 1}))
+          interactor.call(basket_id, product_code, 1)
+        }.to broadcast(:item_set, a_hash_including(items: {product_code => {price: 10, quantity: 1}}))
       end
     end
 
     context 'when item is in basket' do
       it 'increases quantity' do
         basket_id = SecureRandom.uuid
-        product_id = SecureRandom.uuid
-        repository = FakeBasketRepository.new({product_id => {price: 10, quantity: 1}})
+        product_code = "abcd"
+        repository = FakeBasketRepository.new({product_code => {price: 10, quantity: 1}})
         interactor = described_class.new(repository)
         expect {
-          interactor.call(basket_id, product_id, 1)
-        }.to broadcast(:item_set, a_hash_including(product_id => {price: 10, quantity: 2}))
+          interactor.call(basket_id, product_code, 1)
+        }.to broadcast(:item_set, a_hash_including(items: {product_code => {price: 10, quantity: 2}}))
       end
     end
 
@@ -46,7 +46,7 @@ RSpec.describe CashRegister::Interactors::SetItem do
         interactor = described_class.new(repository)
         expect {
           interactor.call(basket_id, product_id, -1)
-        }.to broadcast(:item_set, {})
+        }.to broadcast(:item_set, a_hash_including(items: {}))
       end
     end
   end

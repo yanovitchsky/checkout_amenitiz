@@ -7,7 +7,7 @@ RSpec.describe CashRegister::Interactors::GetBasket do
     context 'when basket does not exist' do
       it 'broadcast not_found' do
         repo = fake(:repository) {CashRegister::Repositories::Basket}
-        stub(repo).find(any_args) { raise Repositories::RecordNotFoundError}
+        stub(repo).get(any_args) { raise Repositories::RecordNotFoundError}
         interactor = described_class.new(repo)
         expect { interactor.call(SecureRandom) }.to broadcast(:basket_not_found)
       end
@@ -17,7 +17,7 @@ RSpec.describe CashRegister::Interactors::GetBasket do
       it 'broadcast found with basket' do
         repo = fake(:repository, find: basket) {CashRegister::Repositories::Basket}
         interactor = described_class.new(repo)
-        expect { interactor.call(basket.id) }.to broadcast(:basket_found, basket)
+        expect { interactor.call(basket.id) }.to broadcast(:basket_found)
       end
     end
   end

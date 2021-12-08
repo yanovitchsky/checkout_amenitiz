@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'faker'
 require 'spec_helper'
+# require 'mocha'
 require 'bogus/rspec'
 require 'wisper/rspec/matchers'
 require File.expand_path(__FILE__, '../support/factory_bot.rb')
@@ -39,6 +40,10 @@ end
 RSpec::configure do |config|
   config.include(Wisper::RSpec::BroadcastMatcher)
 end
+
+# RSpec.configure do |config|
+#   config.mock_with :mocha
+# end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
