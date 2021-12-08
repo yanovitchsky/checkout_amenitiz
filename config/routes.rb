@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   resources :products, only: %w(index)
   resources :baskets, only: %w(show create update)
+  root "pages#index"
 end
