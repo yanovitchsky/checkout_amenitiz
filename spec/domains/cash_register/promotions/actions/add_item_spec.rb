@@ -7,7 +7,7 @@ RSpec.describe CashRegister::Promotions::Actions::AddItem do
     it 'adds item to basket' do
       basket_id = SecureRandom.uuid
       product_id = SecureRandom.uuid
-      basket = {product_id => {price: 10, quantity: 2}}
+      basket = {items: {product_id => {price: 10, quantity: 2}}}
       repository = FakeBasketRepository.new(basket)
       action = described_class.new(repository)
       result = action.apply(basket_id, product_id, 2)
