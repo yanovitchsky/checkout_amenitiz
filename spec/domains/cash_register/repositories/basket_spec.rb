@@ -21,7 +21,7 @@ RSpec.describe CashRegister::Repositories::Basket do
         basket = FactoryBot.create(:basket)
         product = products.first
         basket_result = repo.set_item(basket.id, product.code,1)
-        expect(basket_result).to include(items: {product.code => {price: product.price, quantity: 1}})
+        expect(basket_result).to include(items: {product.code => {price: product.price, quantity: 1, name: product.name}})
       end
     end
 
@@ -31,7 +31,15 @@ RSpec.describe CashRegister::Repositories::Basket do
         product = products.first
         basket.line_items.create(quantity: 1, product: product)
         basket_result = repo.set_item(basket.id, product.code,3)
-        expect(basket_result).to include(items: {product.code => {price: product.price, quantity: 4}})
+        expect(basket_result).to include(items: {product.code => {price: product.price, quantity: 4, name: product.name}})
+      end
+
+      it 'decrease item quantity' do
+        basket = FactoryBot.create(:basket)
+        product = products.first
+        basket.line_items.create(quantity: 2, product: product)
+        basket_result = repo.set_item(basket.id, product.code,-1)
+        expect(basket_result).to include(items: {product.code => {price: product.price, quantity: 1, name: product.name}})
       end
     end
 
@@ -40,7 +48,7 @@ RSpec.describe CashRegister::Repositories::Basket do
         basket = FactoryBot.create(:basket)
         product = products.first
         basket.line_items.create(quantity: 4, product: product)
-        basket_result = repo.set_item(basket.id, product.code,0)
+        basket_result = repo.set_item(basket.id, product.code, -4)
         expect(basket_result).to include(items: {})
       end
     end

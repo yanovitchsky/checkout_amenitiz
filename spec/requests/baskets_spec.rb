@@ -4,7 +4,7 @@ RSpec.describe "Baskets", type: :request do
   describe "POST /baskets" do
     it 'create a new basket' do
       post '/baskets'
-      expect(response.body).to eq({items: {}, total: 0}.to_json)
+      expect(JSON.parse(response.body)).to a_hash_including({"items" => {}, "total" => 0})
       expect(response).to have_http_status(:created)
     end
   end
@@ -27,10 +27,12 @@ RSpec.describe "Baskets", type: :request do
   
       it 'return basket by id' do
         res = { 
+          id: @basket.id,
           items: {
             @product.code => {
               price: @product.price,
-              quantity: 1
+              quantity: 1,
+              name: @product.name
             }
           },
           total: @product.price
@@ -51,10 +53,12 @@ RSpec.describe "Baskets", type: :request do
     end
     it 'adds a new item to the basket' do
       res = { 
+        id: @basket.id,
         items: {
           @product.code => {
             price: @product.price,
-            quantity: 2
+            quantity: 2,
+            name: @product.name
           }
         },
         total: @product.price * 2

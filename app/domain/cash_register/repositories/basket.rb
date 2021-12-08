@@ -18,10 +18,8 @@ module CashRegister
         line_item = basket.line_items.where(product_id: product.id).first
         if line_item.nil? && quantity > 0
           basket.line_items.create(quantity: quantity, product: product)
-        elsif !line_item.nil? && quantity > 0
-          line_item.update(quantity: line_item.quantity + quantity)
         else
-          line_item.destroy
+          line_item.quantity + quantity <= 0 ? line_item.destroy : line_item.update(quantity: line_item.quantity + quantity)
         end
         basket_result(basket)
       end
@@ -35,10 +33,10 @@ module CashRegister
 
       def basket_result(basket)
         items = basket.line_items.each_with_object({}) do |line_item, hash|
-          hash[line_item.product.code] = {price: line_item.product.price, quantity: line_item.quantity}
+          hash[line_item.product.code] = {price: line_item.product.price, quantity: line_item.quantity, name: line_item.product.name}
         end
         total = get_total(items)
-        {items: items, total: total}
+        {id: basket.id, items: items, total: total}
       end
 
       def get_total(basket_result)

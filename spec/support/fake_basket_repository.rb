@@ -18,12 +18,10 @@ class FakeBasketRepository
   end
 
   def set_item(id, product_code, quantity)
-    if @basket.has_key?(product_code) && quantity <= 0
-      @basket.delete(product_code)
-    elsif @basket.has_key?(product_code) && quantity > 0
-      @basket[product_code][:quantity] += quantity
+    if !@basket.has_key?(product_code) && quantity > 0
+      @basket[product_code] = {price: 10, quantity: quantity}
     else
-      @basket[product_code] = {price: 10, quantity: 1}
+      @basket[product_code][:quantity] + quantity <= 0 ? @basket.delete(product_code) : @basket[product_code][:quantity] += quantity
     end
     total = @basket.reduce(0) do |sum, (key, value)|
       sum += value[:quantity] * value[:price]

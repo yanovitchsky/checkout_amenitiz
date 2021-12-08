@@ -16,7 +16,7 @@ RSpec.describe CashRegister::Interactors::SetItem do
     end
     context 'when item is not in basket' do
       it 'adds item' do
-        repository = FakeBasketRepository.new
+        repository = FakeBasketRepository.new()
         interactor = described_class.new(repository)
         basket_id = SecureRandom.uuid
         product_code = 'abcd'

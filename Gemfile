@@ -44,3 +44,5 @@ group :test do
   gem 'wisper-rspec', require: false
 end
 
+
+gem 'mini_racer', platforms: :ruby

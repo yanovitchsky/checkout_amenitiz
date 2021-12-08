@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'hello_world', to: 'hello_world#index'
   # if Rails.env.development?
   #   mount Sidekiq::Web => '/sidekiq'
   # else
