@@ -35,20 +35,20 @@ module CashRegister
         items = basket.line_items.each_with_object({}) do |line_item, hash|
           hash[line_item.product.code] = {price: line_item.product.price, quantity: line_item.quantity, name: line_item.product.name}
         end
-        total = get_total(items)
-        {id: basket.id, items: items, total: total}
+        total = get_total(items, basket.id)
+        {id: basket.id, items: items, total: total, with_discount: total}
       end
 
-      def get_total(basket_result)
+      def get_total(basket_result, basket_id)
         total = basket_result.reduce(0) do |sum, (key, value)|
           sum += value[:quantity] * value[:price]
         end
-        discount = ::Promotion.all.reduce(0) do |sum, promotion|
-          klass = get_rule_class(promotion.promo_type)
-          rule = klass.new(@repository)
-          sum += rule.apply(promotion.conditions, promotion.actions)
-        end
-        total - discount
+        # discount = ::Promotion.all.reduce(0) do |sum, promotion|
+        #   klass = get_rule_class(promotion.promo_type)
+        #   rule = klass.new(self, basket_id)
+        #   sum += rule.apply(promotion.conditions, promotion.actions)
+        # end
+        # total
       end
 
       def get_rule_class(type)

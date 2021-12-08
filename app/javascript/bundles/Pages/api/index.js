@@ -39,3 +39,9 @@ export const setItem = async (basket_id, product_code, quantity) => {
   const data = await response.json()
   return data;
 }
+
+export const checkoutBasket = async (basket_id) => {
+  const response = await fetch(`/baskets/${basket_id}/checkout`)
+  const data = await response.json()
+  return data;
+}

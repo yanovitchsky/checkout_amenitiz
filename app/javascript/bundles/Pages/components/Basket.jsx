@@ -2,7 +2,8 @@ import React from "react";
 import { useBasket } from '../context/basket';
 
 const Basket = () => {
-  const {basket, updateBasket, count} = useBasket();
+    console.log('handleCheckout')
+  const {basket, updateBasket, checkout, handleCheckout} = useBasket();
 
   const handleDecrement = (code) => {
     const productCode = basket.items[code]
@@ -23,8 +24,21 @@ const Basket = () => {
   const renderTotal = () => {
     return(
       <div>
-        <span className="text-lg pr-4">Total:</span>
-        <span className="text-xl text-gray-800">{basket?.total} €</span>
+        <div>
+          <span className="text-lg pr-4">Total:</span>
+          <span className="text-xl text-gray-800">{basket?.total.toFixed(2)} €</span>
+        </div>
+        <div>
+          <button 
+            className="text-xl bg-blue-500 text-white text-sm py-1 px-2 rounded disabled:opacity-30"
+            onClick={() => handleCheckout()}
+            disabled={checkout}
+          >Checkout</button>
+        </div>
+        <div>
+          <span className="text-lg pr-4">Total after checkout:</span>
+          <span className="text-xl text-gray-800">{basket?.with_discount.toFixed(2)} €</span>
+        </div>
       </div>
     )
   }
@@ -60,7 +74,6 @@ const Basket = () => {
   return(
     <div>
       <h1 className="text-2xl pb-6">Basket</h1>
-      <span>{count}</span>
       <div>
         { basket?.items && Object.entries(basket?.items).length
           ? 

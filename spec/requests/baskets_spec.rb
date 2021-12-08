@@ -35,7 +35,8 @@ RSpec.describe "Baskets", type: :request do
               name: @product.name
             }
           },
-          total: @product.price
+          total: @product.price,
+          with_discount: @product.price
         }
 
         get "/baskets/#{@basket.id}"
@@ -61,7 +62,8 @@ RSpec.describe "Baskets", type: :request do
             name: @product.name
           }
         },
-        total: @product.price * 2
+        total: @product.price * 2,
+        with_discount: @product.price * 2
       }
 
       patch  "/baskets/#{@basket.id}", :params => { code: @product.code, quantity: 2 }

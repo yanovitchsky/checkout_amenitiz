@@ -16,7 +16,7 @@ RSpec.describe CashRegister::Promotions::Rules::ItemDiscount do
   describe '#eligible?' do
     context 'conditions not met' do
       it 'returns false' do
-        basket = {product.code => {price: product.price, quantity: 1}}
+        basket = {items: {product.code => {price: product.price, quantity: 1}}}
         repository = FakeBasketRepository.new(basket)
         rule = described_class.new(repository, basket_id)
         conditions = JSON.parse(promotion.conditions)
@@ -25,7 +25,7 @@ RSpec.describe CashRegister::Promotions::Rules::ItemDiscount do
     end
     context 'conditions met' do
       it 'returns true' do
-        basket = {product.code => {price: product.price, quantity: 4}}
+        basket = {items: {product.code => {price: product.price, quantity: 4}}}
         repository = FakeBasketRepository.new(basket)
         rule = described_class.new(repository, basket_id)
         conditions = JSON.parse(promotion.conditions)

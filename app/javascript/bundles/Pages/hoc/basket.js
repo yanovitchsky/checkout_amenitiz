@@ -1,12 +1,13 @@
 import { BasketContext } from "../context/basket";
 import React, { useState, useEffect } from "react";
 
-import { fetchBasket, setItem } from "../api"
+import { fetchBasket, setItem, checkoutBasket } from "../api"
 import { getBasketToken}  from "../storage"
 
 
 const withBasket = (Component) => (props) => {
   const [basket, setBasket] = useState({});
+  const [checkout, setCheckout] = useState(false);
 
   useEffect(() =>{
     (async function getBasket() {
@@ -22,15 +23,31 @@ const withBasket = (Component) => (props) => {
     setBasket(previousBasket => ({
       ...previousBasket, 
       items: response.items, 
-      total: response.total
+      total: response.total,
+      with_discount: response.with_discount
     }));
+    setCheckout(false)
+  }
+
+  const handleCheckout = async () => {
+    const token = await getBasketToken()
+    const response = await checkoutBasket(token)
+    setBasket(previousBasket => ({
+      ...previousBasket, 
+      items: response.items, 
+      total: response.total,
+      with_discount: response.with_discount
+    }));
+    setCheckout(true)
   }
 
   return(
     <BasketContext.Provider
       value={{
         basket,
-        updateBasket
+        updateBasket,
+        checkout,
+        handleCheckout
       }}
     >
       <Component {...props} />

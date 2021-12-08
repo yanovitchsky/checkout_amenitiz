@@ -6,7 +6,7 @@ RSpec.describe CashRegister::Promotions::Actions::AdjustPriceRatio do
   describe "#apply" do
     context 'when product is not in basket' do
       it 'returns 0' do
-        repository = FakeBasketRepository.new({})
+        repository = FakeBasketRepository.new({id: SecureRandom.uuid, items: {}, total: 0})
         action = described_class.new(repository)
         expect(action.apply(SecureRandom.uuid, "ABC", Rational('2/3'))).to eq(0)
       end
@@ -15,7 +15,7 @@ RSpec.describe CashRegister::Promotions::Actions::AdjustPriceRatio do
       it 'return amount' do
         basket_id = SecureRandom.uuid
         product = FactoryBot.build(:product)
-        basket = {product.code => {price: 11.23, quantity: 3}}
+        basket = {items: {product.code => {price: 11.23, quantity: 3}}}
         repository = FakeBasketRepository.new(basket)
         action = described_class.new(repository)
         expect(action.apply(basket_id, product.code, Rational('2/3'))).to eq(11.23)

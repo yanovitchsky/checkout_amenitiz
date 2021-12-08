@@ -6,10 +6,11 @@ module CashRegister
           @repository = repository
         end
         def apply(basket_id, item_code, rational)
+          Rails.logger.info "apply ratio adjusment"
           basket = @repository.get(basket_id)
-          return 0 unless basket.has_key?(item_code)
-          total_price = basket[item_code][:quantity] * basket[item_code][:price]
-          reduced_price = basket[item_code][:quantity] * basket[item_code][:price] * rational
+          return 0 unless basket[:items].has_key?(item_code)
+          total_price = basket[:items][item_code][:quantity] * basket[:items][item_code][:price]
+          reduced_price = basket[:items][item_code][:quantity] * basket[:items][item_code][:price] * Rational(rational)
           total_price - reduced_price
         end
       end

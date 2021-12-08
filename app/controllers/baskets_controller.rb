@@ -29,6 +29,14 @@ class BasketsController < ApplicationController
     interactor.call(params[:id], params[:code], params[:quantity].to_i)
   end
 
+  def checkout
+    interactor = CashRegister::Interactors::Checkout.new(repository)
+    interactor.on(:checked_out) do |basket|
+      render json: basket, status: :created
+    end
+    interactor.call(params[:id])
+  end
+
   private
   def repository
     CashRegister::Repositories::Basket.new

@@ -16,12 +16,14 @@ module CashRegister
         
         def apply(conditions, actions)
           if eligible?(conditions)
+            Rails.logger.info "eligible #{conditions}"
             return actions.reduce(0) do |sum, action|
               klass = get_action_class(action['type'])
               aktion = klass.new(@repository)
               sum += aktion.apply(@basket_id, action['product_code'], action['discount'])
             end
           end
+          Rails.logger.info "Not eligible #{conditions}"
           return 0
         end
 
@@ -29,7 +31,7 @@ module CashRegister
           basket = @repository.get(@basket_id)
           product_code = conditions['product_code']
           min_item = conditions['min_item']
-          basket.has_key?(product_code) && basket[product_code][:quantity] >= min_item
+          basket[:items].has_key?(product_code) && basket[:items][product_code][:quantity] >= min_item
         end
 
         private
