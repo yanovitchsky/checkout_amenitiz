@@ -1,0 +1,62 @@
+{
+  "Index.js": "/packs/js/Index-40107c5f403536e11af0.js",
+  "Index.js.map": "/packs/js/Index-40107c5f403536e11af0.js.map",
+  "application.css": "/packs/css/application-93dd51c5.css",
+  "application.js": "/packs/js/application-63b72dbb5c1435bcb3fd.js",
+  "application.js.map": "/packs/js/application-63b72dbb5c1435bcb3fd.js.map",
+  "entrypoints": {
+    "application": {
+      "css": [
+        "/packs/css/application-93dd51c5.css"
+      ],
+      "js": [
+        "/packs/js/application-63b72dbb5c1435bcb3fd.js"
+      ],
+      "js.map": [
+        "/packs/js/application-63b72dbb5c1435bcb3fd.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/packs/js/hello_react-bfdfd56a1071553ce73f.js"
+      ],
+      "js.map": [
+        "/packs/js/hello_react-bfdfd56a1071553ce73f.js.map"
+      ]
+    },
+    "hello-world-bundle": {
+      "js": [
+        "/packs/js/hello-world-bundle-1dd7e5206d9f93fbe4fe.js"
+      ],
+      "js.map": [
+        "/packs/js/hello-world-bundle-1dd7e5206d9f93fbe4fe.js.map"
+      ]
+    },
+    "Index": {
+      "js": [
+        "/packs/js/Index-40107c5f403536e11af0.js"
+      ],
+      "js.map": [
+        "/packs/js/Index-40107c5f403536e11af0.js.map"
+      ]
+    },
+    "main-bundle": {
+      "css": [
+        "/packs/css/main-bundle-93dd51c5.css"
+      ],
+      "js": [
+        "/packs/js/main-bundle-d9e10d9d0afb30587527.js"
+      ],
+      "js.map": [
+        "/packs/js/main-bundle-d9e10d9d0afb30587527.js.map"
+      ]
+    }
+  },
+  "hello-world-bundle.js": "/packs/js/hello-world-bundle-1dd7e5206d9f93fbe4fe.js",
+  "hello-world-bundle.js.map": "/packs/js/hello-world-bundle-1dd7e5206d9f93fbe4fe.js.map",
+  "hello_react.js": "/packs/js/hello_react-bfdfd56a1071553ce73f.js",
+  "hello_react.js.map": "/packs/js/hello_react-bfdfd56a1071553ce73f.js.map",
+  "main-bundle.css": "/packs/css/main-bundle-93dd51c5.css",
+  "main-bundle.js": "/packs/js/main-bundle-d9e10d9d0afb30587527.js",
+  "main-bundle.js.map": "/packs/js/main-bundle-d9e10d9d0afb30587527.js.map"
+}
