@@ -1,16 +1,32 @@
 {
-  "application.js.map": "/packs/js/application-e93144c90296054dd6c3.hot-update.js.map",
+  "application.css": "/packs/css/application-93dd51c5.css",
+  "application.js": "/packs/js/application-38a9851f731a38a7f83e.js",
+  "application.js.map": "/packs/js/application-38a9851f731a38a7f83e.js.map",
   "entrypoints": {
     "application": {
+      "css": [
+        "/packs/css/application-93dd51c5.css"
+      ],
+      "js": [
+        "/packs/js/application-38a9851f731a38a7f83e.js"
+      ],
       "js.map": [
-        "/packs/js/application-e93144c90296054dd6c3.hot-update.js.map"
+        "/packs/js/application-38a9851f731a38a7f83e.js.map"
       ]
     },
     "main-bundle": {
+      "css": [
+        "/packs/css/main-bundle-93dd51c5.css"
+      ],
+      "js": [
+        "/packs/js/main-bundle-7fc5e9d78c1b1f4f5f04.js"
+      ],
       "js.map": [
-        "/packs/js/main-bundle-e93144c90296054dd6c3.hot-update.js.map"
+        "/packs/js/main-bundle-7fc5e9d78c1b1f4f5f04.js.map"
       ]
     }
   },
-  "main-bundle.js.map": "/packs/js/main-bundle-e93144c90296054dd6c3.hot-update.js.map"
+  "main-bundle.css": "/packs/css/main-bundle-93dd51c5.css",
+  "main-bundle.js": "/packs/js/main-bundle-7fc5e9d78c1b1f4f5f04.js",
+  "main-bundle.js.map": "/packs/js/main-bundle-7fc5e9d78c1b1f4f5f04.js.map"
 }
