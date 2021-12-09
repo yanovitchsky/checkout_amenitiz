@@ -52,15 +52,15 @@ const Basket = () => {
               <li key={code} className="text-lg flex flex-row justify-around gap-x-4">
                 <span>{basket.items[code].name}</span>
                 <span>({basket.items[code].price} €)</span>
-                <a 
+                <button 
                   className="text-xl bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-2 rounded"
                   onClick={() => handleDecrement(code)}
-                >-</a>
+                >-</button>
                 <span>{basket.items[code].quantity}</span>
-                <a 
+                <button 
                   className="text-xl bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-2 rounded"
                   onClick={() => handleIncrement(code)}
-                >+</a>
+                >+</button>
               </li>
             )
           })}

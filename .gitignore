@@ -4,8 +4,8 @@ node_modules/
 log/
 storage
 
-/public/assets
-/public/packs
+# /public/assets
+# /public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log

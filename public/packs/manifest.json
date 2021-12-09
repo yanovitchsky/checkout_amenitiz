@@ -1,0 +1,16 @@
+{
+  "application.js.map": "/packs/js/application-e93144c90296054dd6c3.hot-update.js.map",
+  "entrypoints": {
+    "application": {
+      "js.map": [
+        "/packs/js/application-e93144c90296054dd6c3.hot-update.js.map"
+      ]
+    },
+    "main-bundle": {
+      "js.map": [
+        "/packs/js/main-bundle-e93144c90296054dd6c3.hot-update.js.map"
+      ]
+    }
+  },
+  "main-bundle.js.map": "/packs/js/main-bundle-e93144c90296054dd6c3.hot-update.js.map"
+}
